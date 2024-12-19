@@ -1,10 +1,16 @@
 import { useState } from 'react'
+import ClaudeRecipe from './ClaudeRecipe';
+import { GenerateRecipe } from './ai';
+import IngredientsList from './IngredientsList';
+
+
 
 export default function Main() {
 
-  const [ingredientsList, setIngredientsList] = useState([]);
-  const [recipeDisplay, setRecipeDisplay] = useState(false);
 
+  const [ingredientsList, setIngredientsList] = useState([]);
+ 
+  const [recipe, setRecipe] = useState('');
   
   function handleAddIngredient(event) {
     event.preventDefault();
@@ -14,19 +20,17 @@ export default function Main() {
     event.currentTarget.reset();
   }
 
-  function displayIngredientsList() {
-    return ingredientsList.map((ingredient) => (
-      <li key={ingredient}>{ingredient}</li>
-    ))
+  async function handleGetRecipe() {
+    setRecipe(await GenerateRecipe(ingredientsList));
+
+    console.log('recipe:', recipe);
   }
 
-  function handleGetRecipe() {
-    setRecipeDisplay(prevRecipeDisplay => !prevRecipeDisplay);
-  }
 
   return (
     <main className="main-styling">
       <section className="content-styling">
+        <h1>Add Ingredients</h1>
       <form
         onSubmit={handleAddIngredient}
         //action={handleAddIngredient}
@@ -46,27 +50,9 @@ export default function Main() {
         </button>
       </form>
 
+      <IngredientsList setIngredientsList={setIngredientsList} ingredientsList={ingredientsList} handleGetRecipe={handleGetRecipe} />
 
-      <div className="ingredients-list-styling">
-      {ingredientsList.length > 0 && <h1>Ingredients on hand:</h1> }
-        <ul>
-          {displayIngredientsList()}
-        </ul>
-      </div>
-
-      
-      {ingredientsList.length > 3 && <div className="get-recipe-card">
-        <div className="get-recipe-card-text">
-          <h3>Ready for a recipe?</h3>
-          <p className="get-recipe-card-text-p">Generate a recipe based on your ingredients</p>
-        </div>
-        <button onClick={handleGetRecipe} className="get-recipe-button">Get Recipe</button>
-      </div>}
-
-      {recipeDisplay && 
-      <section className="recipe-display-styling">
-        <h2>Recipe</h2>
-      </section>}
+      <ClaudeRecipe recipe={recipe}/>
 
       </section>
     </main>
