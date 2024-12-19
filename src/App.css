@@ -21,6 +21,10 @@ h1 {
 
 .main-styling {
   padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
 .form-styling {
@@ -104,9 +108,112 @@ button:active {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-} 
+}
 
 .input-styling {
   background-color: #eaeaea;
   color: #393939;
-} 
+}
+
+.content-styling {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+ul {
+  padding: 0px 16px;
+  margin: 0;
+  color: #475467;
+}
+
+li {
+  color: var(--Gray-600, #475467);
+
+  /* Text lg/Regular */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  /* 155.556% */
+}
+
+.ingredients-list-styling {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.get-recipe-card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.get-recipe-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 56px;
+
+  width: 594px;
+  height: 109px;
+  padding: 28px 41px 29px 42px;
+
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #F0EFEB;
+}
+
+h3 {
+  color: #141413;
+  color: #141413;
+
+  /* text-lg/leading-6/font-medium */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* 133.333% */
+  margin: 0;
+}
+
+.get-recipe-card-text-p {
+  color: #6B7280;
+
+  /* text-sm/leading-5/font-normal */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+  margin: 0;
+}
+
+.get-recipe-button {
+  padding: 9px 17px;
+  border-radius: 6px;
+  background: #D17557;
+
+  /* shadow/sm */
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  border: none;
+  cursor: pointer;
+  color: #FAFAF8;
+
+  /* text-sm/leading-5/font-medium */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  height: 38px;
+  /* 142.857% */
+
+}
