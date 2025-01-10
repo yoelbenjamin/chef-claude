@@ -6,7 +6,7 @@ import IngredientsList from './IngredientsList';
 
 
 export default function Main() {
-
+  const [loading, setLoading] = useState(false);
 
   const [ingredientsList, setIngredientsList] = useState([]);
  
@@ -21,8 +21,11 @@ export default function Main() {
   }
 
   async function handleGetRecipe() {
+    setLoading(true);
+
     setRecipe(await GenerateRecipe(ingredientsList));
 
+    setLoading(false);
     console.log('recipe:', recipe);
   }
 
@@ -30,7 +33,7 @@ export default function Main() {
   return (
     <main className="main-styling">
       <section className="content-styling">
-        <h1>Add Ingredients</h1>
+        <h1>Add 3 Ingredients</h1>
       <form
         onSubmit={handleAddIngredient}
         //action={handleAddIngredient}
@@ -52,6 +55,8 @@ export default function Main() {
 
       <IngredientsList setIngredientsList={setIngredientsList} ingredientsList={ingredientsList} handleGetRecipe={handleGetRecipe} />
 
+      {loading && 
+      <p>Grabbing a recipe for you...</p>}
       <ClaudeRecipe recipe={recipe}/>
 
       </section>

@@ -21,7 +21,7 @@ export default function ingredientsList(props) {
       </div>
 
       {
-        props.ingredientsList.length > 3 && <div className="get-recipe-card">
+        props.ingredientsList.length > 2 && <div className="get-recipe-card">
           <div className="get-recipe-card-text">
             <h3>Ready for a recipe?</h3>
             <p className="get-recipe-card-text-p">Generate a recipe based on your ingredients</p>
